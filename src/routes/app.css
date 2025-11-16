@@ -1,0 +1,85 @@
+@import './media.css';
+
+html {
+    height: 100%;
+    font-family: sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scroll-padding-top: 60px;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+}
+
+.app {
+    color-scheme: light only;
+}
+
+.app_dark {
+    color-scheme: dark only;
+}
+
+.app {
+    --bg-primary: #fff;
+    --bg-secondary: #fbfbfb;
+    --bg-tertiary: #f0f0f0;
+    --bg-quaternary: #e0e0e0;
+    --text-primary: #111111;
+    --text-info: #888;
+    --text-fill-02: rgba(17, 17, 17, .2);
+    --accent: #4eb0da;
+}
+
+.app_dark {
+    --bg-primary: #222;
+    --bg-secondary: #262626;
+    --bg-tertiary: #303030;
+    --bg-quaternary: #404040;
+    --text-primary: #f8f8f8;
+    --text-info: #999;
+    --text-fill-02: rgba(248, 248, 248, .2);
+    --accent: #4eb0da;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+:target {
+    animation: target 1s ease-in-out;
+}
+
+@keyframes target {
+    0% {
+        background-color: transparent;
+    }
+
+    25% {
+        background-color: var(--accent);
+    }
+
+    50% {
+        background-color: transparent;
+    }
+
+    75% {
+        background-color: var(--accent);
+    }
+
+    100% {
+        background-color: transparent;
+    }
+}

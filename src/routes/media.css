@@ -1,0 +1,2 @@
+@custom-media --desktop-window (min-width: 40em);
+@custom-media --desktop-window-large (min-width: 80em);

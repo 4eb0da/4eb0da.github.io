@@ -1,0 +1,146 @@
+<script lang="ts">
+    const { data } = $$props;
+
+    const dateFormat = new Intl.DateTimeFormat('ru-RU', {
+        day: 'numeric',
+        month: 'long'
+    });
+
+    function getMonth(date: Date): string {
+        return dateFormat.format(date).split(' ').find(it => !/[0-9]/.test(it[0])) || '';
+    }
+</script>
+
+<svelte:head>
+    <title>4eb0da</title>
+    <meta name="description" content="Блог Александра Нефедова про фронтенд-разработку">
+</svelte:head>
+
+<main>
+    <h1 class="header">
+        Привет, я <span class="highlight">Александр Нефедов</span>, а это мой блог про <span class="highlight">фронтенд-разработку</span>
+    </h1>
+    <p>
+        Последние посты:
+    </p>
+    <ul class="posts-list">
+        {#each data.posts as post}
+            <li>
+                <a href="/posts/{post.name}" class="post">
+                    <div class="post__date">
+                        <div class="post__day">
+                            {post.date.getDate()}
+                        </div>
+                        <div class="post__month">
+                            {getMonth(post.date)}
+                        </div>
+                        <div class="post__year">
+                            {post.date.getFullYear()}
+                        </div>
+                    </div>
+                    <div class="post__info">
+                        <div class="post__title">
+                            {post.title}
+                        </div>
+                        {#if post.description}
+                            <div class="post__description">
+                                {post.description}
+                            </div>
+                        {/if}
+                        {#if Array.isArray(post.tags) && post.tags.length}
+                            <div class="post__tags">
+                                {post.tags}
+                            </div>
+                        {/if}
+                    </div>
+                </a>
+            </li>
+        {/each}
+    </ul>
+</main>
+
+<style>
+    @import './media.css';
+
+    main {
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    @media (--desktop-window) {
+        main {
+            max-width: 40rem;
+        }
+    }
+
+    .header {
+        font-size: 2.4rem;
+        text-wrap: pretty;
+    }
+
+    .highlight {
+        color: var(--accent);
+    }
+
+    .posts-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .post {
+        display: flex;
+        color: inherit;
+        text-decoration: none;
+        transition: background-color .15s ease-in-out;
+
+        &:hover {
+            background: var(--text-fill-02);
+        }
+    }
+
+    li + li .post {
+        border-top: 1px solid var(--text-fill-02);
+    }
+
+    .post__date {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 20px 10px 10px;
+        text-align: center;
+    }
+
+    .post__day {
+        font-size: 3rem;
+    }
+
+    .post__month, .post__year {
+        font-size: .8rem;
+        color: var(--text-info);
+    }
+
+    .post__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 1 1 auto;
+        padding: 10px;
+    }
+
+    .post__title {
+        margin-bottom: .4em;
+        font-size: 1.6rem;
+    }
+
+    .post__description {
+        margin-bottom: .4rem;
+        text-wrap: balance;
+    }
+
+    .post__tags {
+        font-size: .8rem;
+        color: var(--text-info);
+    }
+</style>

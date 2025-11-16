@@ -1,0 +1,65 @@
+---
+title: My Blog Post
+date: 2025-11-14
+tags:
+    - math
+    - svg
+    - css
+---
+
+# Header 1
+
+Bezier
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi beatae aut totam doloremque odio mollitia vel cumque culpa voluptas, sint necessitatibus fugit consectetur nulla illum voluptates harum hic molestias dicta.
+
+Some inline `code` inside text
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi beatae aut totam doloremque odio mollitia vel cumque culpa voluptas, sint necessitatibus fugit consectetur nulla illum voluptates harum hic molestias dicta.
+
+```
+No syntax block
+```
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi beatae aut totam doloremque odio mollitia vel cumque culpa voluptas, sint necessitatibus fugit consectetur nulla illum voluptates harum hic molestias dicta.
+
+```css showLineNumbers title="abc.css"
+@import './smth';
+
+css {
+    syntax: block;
+}
+```
+
+```tsx
+function Smth(): FC {
+    return <div />;
+}
+```
+
+> quote text
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi beatae aut totam doloremque odio mollitia vel cumque culpa voluptas, sint necessitatibus fugit consectetur nulla illum voluptates harum hic molestias dicta.
+
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi beatae aut totam doloremque odio mollitia vel cumque culpa voluptas, sint necessitatibus fugit consectetur nulla illum voluptates harum hic molestias dicta.
+
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi beatae aut totam doloremque odio mollitia vel cumque culpa voluptas, sint necessitatibus fugit consectetur nulla illum voluptates harum hic molestias dicta.
+
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi beatae aut totam doloremque odio mollitia vel cumque culpa voluptas, sint necessitatibus fugit consectetur nulla illum voluptates harum hic molestias dicta.
+
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi beatae aut totam doloremque odio mollitia vel cumque culpa voluptas, sint necessitatibus fugit consectetur nulla illum voluptates harum hic molestias dicta.
+
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi beatae aut totam doloremque odio mollitia vel cumque culpa voluptas, sint necessitatibus fugit consectetur nulla illum voluptates harum hic molestias dicta.
+
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi beatae aut totam doloremque odio mollitia vel cumque culpa voluptas, sint necessitatibus fugit consectetur nulla illum voluptates harum hic molestias dicta.
+
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi beatae aut totam doloremque odio mollitia vel cumque culpa voluptas, sint necessitatibus fugit consectetur nulla illum voluptates harum hic molestias dicta.
+
+#### Header 5

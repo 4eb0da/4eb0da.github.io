@@ -48,6 +48,15 @@
     });
 </script>
 
+<svelte:head>
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Блог 4eb0da">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+</svelte:head>
+
 <svelte:window
     onscroll={recalcActiveHeader}
     onresize={recalcActiveHeader}

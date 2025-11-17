@@ -79,7 +79,9 @@ function insertHeadMetadata() {
 
 		const {title, description} = file.data.fm;
 		let titleElement;
+		let ogTitle;
 		let descriptionElement;
+		let ogDescription;
 		if (title) {
 			titleElement = {
 				type: 'element',
@@ -89,6 +91,15 @@ function insertHeadMetadata() {
 					type: 'text',
 					value: title
 				}]
+			};
+			ogTitle = {
+				type: 'element',
+				tagName: 'meta',
+				properties: {
+					property: 'og:title',
+					content: title
+				},
+				children: []
 			};
 		}
 		if (description) {
@@ -101,17 +112,50 @@ function insertHeadMetadata() {
 				},
 				children: []
 			};
+			ogDescription = {
+				type: 'element',
+				tagName: 'meta',
+				properties: {
+					property: 'og:description',
+					content: description
+				},
+				children: []
+			};
 		}
 		if (titleElement || descriptionElement) {
-			root.children.unshift({
-				type: 'element',
-				tagName: 'svelte:head',
-				properties: {},
-				children: [
-					titleElement,
-					descriptionElement
-				].filter(Boolean)
-			});
+			let head = root.children.find(it => it.value?.includes('<svelte:head>'));
+			if (!head) {
+				head = {
+					type: 'raw',
+					value: '<svelte:head></svelte:head>'
+				};
+				root.children.unshift(head);
+			}
+			let meta = [
+				titleElement,
+				ogTitle,
+				descriptionElement,
+				ogDescription
+			].filter(Boolean).map(it => {
+				if (it.tagName === 'title') {
+					return `<title>${it.children[0].value}</title>`;
+				}
+				if (it.properties.property) {
+					return `<${it.tagName} property="${it.properties.property}" content="${it.properties.content}">`;
+				}
+				return `<${it.tagName} name="${it.properties.name}" content="${it.properties.content}">`;
+			}).join('');
+			head.value = head.value.replace(/(<svelte:head>)/, () => `<svelte:head><meta property="og:image" content={shareImage}>${meta}`);
+
+			let script = root.children.find(it => it.value?.includes('<script'));
+			if (!script) {
+				script = {
+					type: 'raw',
+					value: '<script lang="ts"></script>'
+				};
+				root.children.unshift(script);
+			}
+			script.value = script.value.replace(/(<script.*?>)/, '$1\nimport shareImage from \'./share.png?url\';\n');
 		}
 		return root;
 	};

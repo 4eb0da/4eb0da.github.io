@@ -77,6 +77,7 @@
         padding-right: 20px;
         padding-left: 20px;
 
+        text-wrap: balance;
         text-wrap: pretty;
 
         transition: padding-right .3s ease-in-out;

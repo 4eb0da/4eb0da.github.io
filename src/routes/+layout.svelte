@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/state';
 	import faviconSvg from '$lib/assets/favicon.svg';
 	import faviconIco from '$lib/assets/favicon.ico';
 	import appleTouchIcon from '$lib/assets/apple-touch-icon.png';
@@ -6,6 +7,7 @@
 
 	let { children } = $props();
 	let menuToggled = $state(false);
+	let hasToc = $state(page.url.pathname.startsWith('/posts/'));
 
 	function onMenu(): void {
 		menuToggled = !menuToggled;
@@ -17,6 +19,10 @@
 			menuToggled = false;
 		}
 	}
+
+	$effect(() => {
+		hasToc = page.url.pathname.startsWith('/posts/');
+	});
 
 	$effect(() => {
 		document.body.classList.toggle('body_menu', menuToggled);
@@ -31,15 +37,22 @@
 
 <main>
 	<header>
-		<a href="/" class="header__origin">
-			4eb0da
-		</a>
+		<div class="header__left">
+			<a href="/" class="link">
+				4eb0da
+			</a>
+			<a href="/about" class="link">
+				Обо мне
+			</a>
+		</div>
 
-		<button class="header__menu" onclick={onMenu}>
-			<div class="visually-hidden">Меню страницы</div>
+		{#if hasToc}
+			<button class="header__menu" onclick={onMenu}>
+				<div class="visually-hidden">Меню страницы</div>
 
-			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 40 40"><path d="M0 0h40v10H0zM0 30h40v10H0zM0 15h40v10H0z" fill="currentColor"/></svg>
-		</button>
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 40 40"><path d="M0 0h40v10H0zM0 30h40v10H0zM0 15h40v10H0z" fill="currentColor"/></svg>
+			</button>
+		{/if}
 	</header>
 	<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -48,6 +61,14 @@
 	</article>
 	<footer>
 		2025
+
+		<a
+			class="link"
+			href="https://github.com/4eb0da/4eb0da.github.io"
+			target="_blank"
+		>
+			Исходник сайта
+		</a>
 	</footer>
 </main>
 
@@ -79,7 +100,13 @@
 		}
 	}
 
-	.header__origin {
+	.header__left {
+		display: flex;
+		align-items: baseline;
+		gap: 12px;
+	}
+
+	.link {
 		color: inherit;
 		text-decoration: none;
 
@@ -110,7 +137,7 @@
 	footer {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		gap: 12px;
 		flex: 0 0 auto;
 		height: 50px;
 		margin: 40px 0 0;

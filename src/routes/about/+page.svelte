@@ -1,5 +1,60 @@
 <svelte:head>
-    <title>about</title>
+    <title>Обо мне</title>
+    <meta name="description" content="Блог Александра Нефедова про фронтенд-разработку">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Блог 4eb0da">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image" content="/share.png">
+    <meta property="og:title" content="4eb0da">
+    <meta property="og:description" content="Блог Александра Нефедова про фронтенд-разработку">
 </svelte:head>
 
-about
+<main>
+    <h1 class="header">
+        Привет, я <span class="highlight">Александр Нефедов</span>, а это мой блог про <span class="highlight">фронтенд-разработку</span>
+    </h1>
+
+    <p>
+        Я профессионально занимаюсь веб-разработкой с 2011го года, а через 2 с половиной года я пришёл трудиться в компанию Яндекс
+    </p>
+
+    <p>
+        Мне интересны веб-технологии, новые фичи браузеров, 3д-графика, сборка, вёрстка, доступность и ещё куча всего =)
+    </p>
+
+    <p>
+        Я участвую в Школе Разработки Интерфейсов Яндекса (которую сам и заканчивал когда-то), временами — в разных ролях
+    </p>
+
+    <p>
+        А по случаю выступаю на разных мероприятиях (Яндекс Субботник, Holy.JS и некоторые другие)
+    </p>
+</main>
+
+<style>
+    @import '../media.css';
+
+    main {
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    @media (--desktop-window) {
+        main {
+            max-width: 40rem;
+        }
+    }
+
+    .header {
+        font-size: 2.4rem;
+        text-wrap: balance;
+        text-wrap: pretty;
+    }
+
+    .highlight {
+        color: var(--accent);
+    }
+</style>

@@ -84,6 +84,7 @@
 
     .header {
         font-size: 2.4rem;
+        text-wrap: balance;
         text-wrap: pretty;
     }
 

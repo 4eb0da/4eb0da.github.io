@@ -1,5 +1,7 @@
 import { load } from '../+page.server';
 
+export const prerender = true;
+
 export async function GET() {
     const origin = 'https://4eb0da.ru';
     const urls = [

@@ -32,6 +32,16 @@
     <p>
         А по случаю выступаю на разных мероприятиях (Яндекс Субботник, Holy.JS и некоторые другие)
     </p>
+
+    <h3>Контакты:</h3>
+
+    <address>
+        <a href="mailto:i4eb0da@yandex.ru">i4eb0da@yandex.ru</a>
+
+        <br>
+
+        <a href="https://github.com/4eb0da" target="_blank">https://github.com/4eb0da</a>
+    </address>
 </main>
 
 <style>
@@ -56,5 +66,18 @@
 
     .highlight {
         color: var(--accent);
+    }
+
+    address {
+        font-style: normal;
+    }
+
+    a {
+        color: var(--accent);
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 </style>

@@ -1,3 +1,5 @@
 # allow crawling everything by default
 User-agent: *
 Disallow:
+
+Sitemap: https://4eb0da.ru/sitemap.txt

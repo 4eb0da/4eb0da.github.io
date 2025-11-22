@@ -33,6 +33,13 @@
 	<link rel="icon" href={faviconIco} sizes="32x32" />
 	<link rel="icon" href={faviconSvg} type="image/svg+xml" />
 	<link rel="apple-touch-icon" href={appleTouchIcon}>
+
+	<link
+		href="/rss.xml"
+		type="application/rss+xml"
+		title="Блог 4eb0da"
+		rel="alternate"
+	>
 </svelte:head>
 
 <main>

@@ -36,7 +36,7 @@
     }
 }
 
-.toc-link {
+[class].toc-link {
     display: block;
     padding: 10px 0;
     color: inherit;
@@ -49,7 +49,7 @@
 }
 
 @media (--desktop-window) {
-    .toc-link {
+    [class].toc-link {
         position: relative;
         padding: .2em 0;
 
@@ -66,27 +66,23 @@
         }
     }
 
-    .toc-link_active::before {
+    [class].toc-link_active::before {
         opacity: 1;
     }
 
-    .toc-link-h3::before {
-        left: 462px;
+    [class].toc-link-h3::before {
+        left: -42px;
     }
 
-    .toc-link-h4::before {
+    [class].toc-link-h4::before {
         left: -62px;
     }
 
-    .toc-link-h5::before {
+    [class].toc-link-h5::before {
         left: -82px;
     }
 
-    .toc-link-h6::before {
+    [class].toc-link-h6::before {
         left: -102px;
     }
-}
-
-.toc-link_active {
-    font-weight: bold;
 }

@@ -36,11 +36,24 @@
     <h3>Контакты:</h3>
 
     <address>
-        <a href="mailto:i4eb0da@yandex.ru">i4eb0da@yandex.ru</a>
+        <a href="mailto:i4eb0da@yandex.ru">
+            <span class="icon icon_mail"></span>
+            i4eb0da@yandex.ru
+        </a>
 
         <br>
 
-        <a href="https://github.com/4eb0da" target="_blank">https://github.com/4eb0da</a>
+        <a href="https://github.com/4eb0da" target="_blank">
+            <span class="icon icon_github"></span>
+            @4eb0da
+        </a>
+
+        <br>
+
+        <a href="http://t.me/blog_4eb0da" target="_blank">
+            <span class="icon icon_telegram"></span>
+            @blog_4eb0da
+        </a>
     </address>
 </main>
 
@@ -73,11 +86,35 @@
     }
 
     a {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
         color: var(--accent);
         text-decoration: none;
 
         &:hover {
             text-decoration: underline;
         }
+    }
+
+    .icon {
+        width: 24px;
+        height: 24px;
+        background: currentColor;
+        mask-size: contain;
+        mask-position: center;
+        mask-repeat: no-repeat;
+    }
+
+    .icon_mail {
+        mask-image: url(./mail.svg);
+    }
+
+    .icon_github {
+        mask-image: url(./github.svg);
+    }
+
+    .icon_telegram {
+        mask-image: url(./telegram.svg);
     }
 </style>

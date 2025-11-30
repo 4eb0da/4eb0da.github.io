@@ -136,7 +136,7 @@
         flex-direction: column;
         justify-content: center;
         flex: 1 1 auto;
-        padding: 10px;
+        padding: 10px 10px 10px 0;
     }
 
     .post__title {

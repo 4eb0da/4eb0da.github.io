@@ -37,6 +37,7 @@
 
     figure {
         margin-inline-start: 0;
+        margin-inline-end: 0;
     }
 
     code[data-line-numbers] {

@@ -173,4 +173,14 @@
             text-decoration: underline;
         }
     }
+
+    blockquote {
+        margin: .2em 0;
+        padding: 0 1em;
+        /* border-radius: .8em;
+        background: var(--bg-tertiary);
+        border: 1px solid var(--text-fill-02); */
+        border-left: 3px solid var(--accent);
+        font-style: italic;
+    }
 }

@@ -1,0 +1,88 @@
+---
+title: "Map() становится удобнее"
+description: "Новые методы для Map: getOrInsert и getOrInsertComputed и зачем они нужны"
+date: 2025-12-07
+tags:
+    - js
+---
+
+## Как пишем сейчас
+
+Я думаю, многие узнают свой код в следующих строчках:
+
+```ts
+let list;
+if (map.has(key)) {
+    list = map.get(key);
+} else {
+    list = [];
+    map.set(key, list);
+}
+list.push(value);
+```
+
+Каждый раз, когда приходится его писать, у меня в голове мысль: 
+
+> Почему так много строк на абсолютно простую и понятную конструкцию? Почему нельзя проще?
+
+И эта ещё без возможных ошибок тайпинга. Вот если бы был другой способ написать этот код...
+
+## 2025 (да, уже)
+
+Новый способ:
+
+```ts
+map.getOrInsert(key, []).push(value);
+```
+
+Да, вот так просто. Именно так, как оно и должно было быть изначально. Метод `getOrInsert` очень похож на `set`, только не осуществляет вставку, если такой ключ уже есть. А ещё он возвращает значение, как `get`, но мы всегда можем быть уверены, что это значение будет.
+
+Ещё один пример, если нам тут же нужно не только получить значение, но и обновить его в случае существования:
+
+```ts
+// Старый вариант
+let counter = map.get(key) || 0;
+++counter;
+map.set(key, counter);
+
+// Новый вариант
+map.set(key, map.getOrInsert(key, 0) + 1);
+```
+
+Не сказать, что есть радикальная разница, но немного короче.
+
+Хороший вопрос, что делать, если у нас сложные вычисления?
+
+```ts
+map.getOrInsert(key, complexCalculation());
+```
+
+В этом случае эти вычисления будут выполнены, даже если ключ уже есть в `map`. На этот случай есть `getOrInsertComputed`:
+
+```ts
+map.getOrInsertComputed(key, key) => complexCalculation(key));
+```
+
+Оба новых метода также доступны и на `WeakMap`.
+
+## Какой статус?
+
+[Предложение](https://github.com/tc39/proposal-upsert) находится на `Stage 3`. И уже реализовано в 3х браузерах: Firefox, Chrome, Safari (пока что только девелоперские версии, в стабильных будет чуть позже).
+
+В `core-js` поддержка появилась несколько месяцев назад, да и полифилятся новые методы [элементарно](https://github.com/tc39/proposal-upsert?tab=readme-ov-file#polyfill).
+
+```js
+Map.prototype.getOrInsert = function (key, defaultValue) {
+    if (!this.has(key)) {
+        this.set(key, defaultValue);
+    }
+    return this.get(key);
+};
+
+Map.prototype.getOrInsertComputed = function (key, callbackFunction) {
+    if (!this.has(key)) {
+        this.set(key, callbackFunction(key));
+    }
+    return this.get(key);
+};
+```

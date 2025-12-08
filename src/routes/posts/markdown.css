@@ -68,6 +68,14 @@
         width: 2.25em;
     }
 
+    pre code [data-line] span {
+        color: var(--shiki-light);
+
+        .app_dark & {
+            color: var(--shiki-dark);
+        }
+    }
+
     .rehype-pretty-copy {
         display: none;
 

@@ -166,6 +166,10 @@ const config = {
 	preprocess: [vitePreprocess(), mdsvex({
 		highlight: {
 			highlighter: createHighlighter({
+				theme: {
+					light: 'github-light',
+					dark: 'github-dark'
+				},
 				keepBackground: false,
 				bypassInlineCode: true,
 				transformers: [

@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import faviconSvg from '$lib/assets/favicon.svg';
-	import faviconIco from '$lib/assets/favicon.ico';
-	import appleTouchIcon from '$lib/assets/apple-touch-icon.png';
+    import { asset } from '$app/paths';
     import './app.css';
 
 	let { children } = $props();
@@ -30,9 +28,9 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" href={faviconIco} sizes="32x32" />
-	<link rel="icon" href={faviconSvg} type="image/svg+xml" />
-	<link rel="apple-touch-icon" href={appleTouchIcon}>
+	<link rel="icon" href={asset('/favicon.ico')} sizes="32x32" />
+	<link rel="icon" href={asset('/favicon.svg')} type="image/svg+xml" />
+	<link rel="apple-touch-icon" href={asset('/apple-touch-icon.png')}>
 
 	<link
 		href="/rss.xml"

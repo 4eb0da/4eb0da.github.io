@@ -6,20 +6,14 @@ import rehypeToc from '@jsdevtools/rehype-toc';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { createHighlighter } from '@svelte-dev/pretty-code';
-import { transformerCopyButton } from '@rehype-pretty/transformers';
 
-function fixCopyButton() {
+function codeCopyButton() {
 	return {
-		name: 'fix-copy-button',
-		code(node) {
-			for (const it of node.children) {
-				if (it.properties?.class === 'rehype-pretty-copy') {
-					delete it.properties.onclick;
-				}
-			}
-			node.children = node.children.filter(it => it.tagName !== 'style');
+		name: 'code-copy-button',
+		postprocess(node) {
+			return '<div>' + node + '<button class="code-copy-button" title="Копировать"></button></div>';
 		}
-	};
+	}
 }
 
 /**
@@ -173,8 +167,7 @@ const config = {
 				keepBackground: false,
 				bypassInlineCode: true,
 				transformers: [
-					transformerCopyButton(),
-					fixCopyButton()
+					codeCopyButton()
 				]
 			})
 		},

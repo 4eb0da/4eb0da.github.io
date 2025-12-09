@@ -76,12 +76,14 @@
         }
     }
 
-    .rehype-pretty-copy {
-        display: none;
+    figure[data-rehype-pretty-code-figure] {
+        position: relative;
+    }
 
+    .code-copy-button {
         position: absolute;
-        top: -.4em;
-        right: -.4em;
+        top: .6em;
+        right: .6em;
 
         width: 24px;
         height: 24px;
@@ -96,11 +98,15 @@
         transition: opacity .3s ease-in-out;
     }
 
-    [data-rehype-pretty-code-figure]:hover .rehype-pretty-copy {
+    .code-copy-button_copied {
+        background-image: url(./copied.svg);
+    }
+
+    [data-rehype-pretty-code-figure]:hover .code-copy-button {
         opacity: .4;
     }
 
-    [data-rehype-pretty-code-figure]:hover .rehype-pretty-copy:hover {
+    [data-rehype-pretty-code-figure]:hover .code-copy-button:hover {
         opacity: .8;
     }
 

@@ -34,11 +34,19 @@
         }
     }
 
+    let copyTimeout: number;
     function onCopyClick(event: MouseEvent): void {
-        if (event.target instanceof Element && event.target.closest('.rehype-pretty-copy')) {
-            const code = event.target.closest<HTMLElement>('code');
-            if (code) {
-                navigator.clipboard.writeText(code.textContent);
+        const button = event.target;
+        if (button instanceof Element && button.closest('.code-copy-button')) {
+            const figure = button.closest<HTMLElement>('figure');
+            if (figure) {
+                navigator.clipboard.writeText(figure.textContent);
+
+                button.classList.add('code-copy-button_copied');
+                clearTimeout(copyTimeout);
+                copyTimeout = window.setTimeout(() => {
+                    button.classList.remove('code-copy-button_copied');
+                }, 3000);
             }
         }
     }

@@ -142,11 +142,14 @@
     .post__title {
         margin-bottom: .4em;
         font-size: 1.6rem;
+        text-wrap: balance;
+        text-wrap: pretty;
     }
 
     .post__description {
         margin-bottom: .4rem;
         text-wrap: balance;
+        text-wrap: pretty;
     }
 
     .post__tags {

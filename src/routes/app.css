@@ -28,9 +28,11 @@ body {
     --bg-secondary: #fbfbfb;
     --bg-tertiary: #f0f0f0;
     --bg-quaternary: #e0e0e0;
+    --bg-quinary: #d0d0d0;
     --text-primary: #111111;
     --text-info: #888;
     --text-fill-02: rgba(17, 17, 17, .2);
+    --text-fill-03: rgba(17, 17, 17, .3);
     --accent: #4eb0da;
 }
 
@@ -39,9 +41,11 @@ body {
     --bg-secondary: #262626;
     --bg-tertiary: #303030;
     --bg-quaternary: #404040;
+    --bg-quinary: #505050;
     --text-primary: #f8f8f8;
     --text-info: #999;
     --text-fill-02: rgba(248, 248, 248, .2);
+    --text-fill-03: rgba(248, 248, 248, .3);
     --accent: #4eb0da;
 }
 

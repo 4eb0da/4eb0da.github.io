@@ -1,0 +1,157 @@
+---
+title: "Вариативные шрифты и font-synthesis"
+description: "Синтезация начертаний символов, насыщенность вариативых шрифтов и история одной проблемы"
+date: 2025-12-21
+tags:
+    - css
+---
+
+<script lang="ts">
+    import FontProblem from './FontProblem.svelte';
+    import FontGeneration from './FontGeneration.svelte';
+    import FontGenerationDisabled from './FontGenerationDisabled.svelte';
+    import FontVariable from './FontVariable.svelte';
+    import screenshotUrl from './problem.png?url';
+</script>
+
+## Проблема
+
+Неправильное использование вариативных шрифтов может приводить к неожиданным результатам. Возьмём простой пример:
+
+<div class="sample">
+    <FontProblem />
+</div>
+
+Весьма вероятно, что в вашем браузере всё выглядит хорошо, поэтому приведу скриншот из Safari:
+
+![Screenshot]({screenshotUrl})
+
+Первый текст отрисован обычным начертанием, второй — насыщенным (полужирным), третий имеет слишком большую насыщенность. Хотя по использованию `font-variation-settings: 'wght' 740` и `font-weight: 740` должны давать одинаковый результат, получается явно не так.
+
+Для того, чтобы разобраться, посмотрим на несколько аспектов работы браузера.
+
+<details>
+    <summary>На всякий случай приведу лицензию шрифта Roboto</summary>
+
+    [Roboto](https://fonts.google.com/specimen/Roboto/license)
+
+    Designed by Christian Robertson, Paratype, Font Bureau
+    License
+
+    Copyright 2011 The Roboto Project Authors (https://github.com/googlefonts/roboto-classic)
+    This Font Software is licensed under the SIL Open Font License, Version 1.1 . This license is copied below, and is also available with a FAQ at: https://openfontlicense.org
+
+    SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
+
+    PREAMBLE
+
+    The goals of the Open Font License (OFL) are to stimulate worldwide development of collaborative font projects, to support the font creation efforts of academic and linguistic communities, and to provide a free and open framework in which fonts may be shared and improved in partnership with others.
+
+    The OFL allows the licensed fonts to be used, studied, modified and redistributed freely as long as they are not sold by themselves. The fonts, including any derivative works, can be bundled, embedded, redistributed and/or sold with any software provided that any reserved names are not used by derivative works. The fonts and derivatives, however, cannot be released under any other type of license. The requirement for fonts to remain under this license does not apply to any document created using the fonts or their derivatives.
+
+    DEFINITIONS
+
+    "Font Software" refers to the set of files released by the Copyright Holder(s) under this license and clearly marked as such. This may include source files, build scripts and documentation.
+
+    "Reserved Font Name" refers to any names specified as such after the copyright statement(s).
+
+    "Original Version" refers to the collection of Font Software components as distributed by the Copyright Holder(s).
+    "Modified Version" refers to any derivative made by adding to, deleting, or substituting -- in part or in whole -- any of the components of the Original Version, by changing formats or by porting the Font Software to a new environment.
+
+    "Author" refers to any designer, engineer, programmer, technical writer or other person who contributed to the Font Software.
+
+    PERMISSION & CONDITIONS
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy of the Font Software, to use, study, copy, merge, embed, modify, redistribute, and sell modified and unmodified copies of the Font Software, subject to the following conditions:
+
+    Neither the Font Software nor any of its individual components, in Original or Modified Versions, may be sold by itself.
+    Original or Modified Versions of the Font Software may be bundled, redistributed and/or sold with any software, provided that each copy contains the above copyright notice and this license. These can be included either as stand-alone text files, human-readable headers or in the appropriate machine-readable metadata fields within text or binary files as long as those fields can be easily viewed by the user.
+    No Modified Version of the Font Software may use the Reserved Font Name(s) unless explicit written permission is granted by the corresponding Copyright Holder. This restriction only applies to the primary font name as presented to the users.
+    The name(s) of the Copyright Holder(s) or the Author(s) of the Font Software shall not be used to promote, endorse or advertise any Modified Version, except to acknowledge the contribution(s) of the Copyright Holder(s) and the Author(s) or with their explicit written permission.
+    The Font Software, modified or unmodified, in part or in whole, must be distributed entirely under this license, and must not be distributed under any other license. The requirement for fonts to remain under this license does not apply to any document created using the Font Software.
+    TERMINATION
+
+    This license becomes null and void if any of the above conditions are not met.
+
+    DISCLAIMER
+
+    THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER DEALINGS IN THE FONT SOFTWARE.
+</details>
+
+## Синтезация начертаний
+
+С появлением кастомных шрифтов в браузерах появилась интересная проблема. В отличии от системных шрифтов, сайты могут предоставить ограниченные, урезанные и неполные шрифты — всё для уменьшения размера. И в случае, если конкретного символа в шрифте нет, браузеры используют фолбечные шрифты для отрисовки *каждого отдельного символа*.
+
+А что происходит, если символ в шрифте есть, но нет нужного варианта? Из вариантов чаще всего вспоминают насыщенность (font-weight) или курсив (font-style), но есть и другие. В этом случае браузеры генерируют нужный вариант из исходного шрифта — делают линии толще, наклоняют символы и так далее.
+
+Конечно, всё это отличается от настоящих начертаний, задуманных дизайнером шрифта, поэтому отображение подобных символов в общем случае является нежелательным. В англоязычных терминах можно встретить "faux-bold" и "faux-italic" — это оно и есть.
+
+<div class="sample">
+    <FontGeneration />
+</div>
+
+Подобную генерацию можно отключить через CSS-свойство `font-synthesis`. У него есть несколько разных значений:
+
+```css
+font-synthesis: none;
+font-synthesis: weight;
+font-synthesis: style;
+font-synthesis: position;
+font-synthesis: small-caps;
+```
+
+Значения также можно перечислить через пробел, если нужно несколько вариантов. Но сегодня нам хватит одного — `none`. С этим значением браузеры выключают синтезацию начертаний:
+
+<div class="sample">
+    <FontGenerationDisabled />
+</div>
+
+## Вариативные шрифты
+
+Вариативные шрифты позволяют использовать не фиксированные варианты начертаний (обычное и насыщенное, к примеру), а произвольные промежуточные значения:
+
+<div class="sample">
+    <FontVariable />
+</div>
+
+Достигается это с помощью вариативной оси `wght`. Это одна из самых популярных осей и встречается часто. Есть и другие оси, но в этой статье мы посмотрим только одну.
+
+Что происходит, если у текста задан `font-weight`? Он в неявном виде подставляется браузером в вариативную ось насыщенности:
+
+```css
+/* Достаточно этого */
+font-weight: 550;
+/* Это уже избыточно */
+font-variation-settings: 'wght' 550;
+```
+
+Синтезация насыщенного начертания работает только одним фиксированные способом. Если использовать шрифт без насыщенного начертания и указать, к примеру, `font-weight: 400` или `font-weight: 500`, то полученный текст будет одинаковый. Разница будет, если превысить `600`, тогда браузер применит синтезацию и появится "насыщенное" начертание. Это своего рода округление до `700` или `bold`.
+
+Других синтезированных "насыщенных" начертаний нет. Только один вариант, и промежуточные значения, к примеру, `450` или `550` здесь никак не работают.
+
+## Так что же произошло?
+
+Сложив две главы, мы получаем, что поверх "честного" насыщенного начертания, заложенного в шрифте, браузер применяет свою синтезацию, получается "двойной" насыщенный шрифт.
+
+Можно легко в этом убедиться и сделать в исходном примере `font-synthesis: none`, это избавит текст от двойной насыщенности.
+
+Так в чём причина? Думаю, многие читатели уже догадались.
+
+```css {5}
+@font-face {
+    font-family: "Roboto";
+    src: ...;
+    font-style: normal;
+    font-weight: 100 900;
+}
+```
+
+В исходном `@font-face` был утерян `font-weight` (именно в декларации шрифта, а не CSS-свойство). Это привело к тому, что браузер начал думать, что шрифт не поддерживает насыщенное начертание (но при этом использовал его!), и применил к нему свою синтезацию. То, что пример работал в нескольких браузерах, лишь скрыло проблему.
+
+Итог максимально банален) Объявляйте свои шрифты правильно и не забывайте о `font-weight`.
+
+<style>
+    .sample {
+        margin: 4rem 0;
+    }
+</style>

@@ -83,9 +83,13 @@
     }
 
     .header {
-        font-size: 2.4rem;
+        font-size: 1.6rem;
         text-wrap: balance;
         text-wrap: pretty;
+
+        @media (--desktop-window) {
+            font-size: 2.4rem;
+        }
     }
 
     .highlight {
@@ -141,9 +145,13 @@
 
     .post__title {
         margin-bottom: .4em;
-        font-size: 1.6rem;
+        font-size: 1.46rem;
         text-wrap: balance;
         text-wrap: pretty;
+
+        @media (--desktop-window) {
+            font-size: 1.6rem;
+        }
     }
 
     .post__description {

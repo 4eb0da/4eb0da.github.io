@@ -1,9 +1,9 @@
 .article__layout {
-    :not(pre)>code {
-        padding: .1em .2em;
-        border-radius: .3em;
+    :not(pre) > code {
+        padding: .2em .4em;
+        border-radius: .4em;
         background: var(--bg-tertiary);
-        border: 1px solid var(--text-fill-02);
+        border: 1px solid var(--text-fill-03);
     }
 
     figcaption[data-rehype-pretty-code-title] {
@@ -74,6 +74,10 @@
         .app_dark & {
             color: var(--shiki-dark);
         }
+    }
+
+    [data-highlighted-line] {
+        background: var(--bg-quinary);
     }
 
     figure[data-rehype-pretty-code-figure] {
@@ -196,5 +200,12 @@
         border: 1px solid var(--text-fill-02); */
         border-left: 3px solid var(--accent);
         font-style: italic;
+    }
+
+    details {
+        padding: .2em .4em;
+        border-radius: .4em;
+        background: var(--bg-tertiary);
+        border: 1px solid var(--text-fill-03);
     }
 }

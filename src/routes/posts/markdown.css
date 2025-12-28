@@ -183,6 +183,13 @@
         border: none;
     }
 
+    video {
+        display: block;
+        max-width: 80%;
+        margin: 30px auto;
+        border: none;
+    }
+
     a {
         text-decoration: none;
         color: var(--accent);

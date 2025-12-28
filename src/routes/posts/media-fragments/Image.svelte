@@ -45,9 +45,9 @@
 
 <div
     class="container"
-    style:--x="{x}px"
-    style:--y="{y}px"
-    style:--size="{size}px"
+    style:--x={x}
+    style:--y={y}
+    style:--size={size}
 >
     <div class="container__inner">
         <div
@@ -141,8 +141,8 @@
 
     .container__test-image {
         background: no-repeat 50% 50% url(./html.svg);
-        background-position: calc(100% * (var(--x) / (512px - var(--size)))) calc(100% * (var(--y) / (512px - var(--size))));
-        background-size: calc(100% / (var(--size) / 512px));
+        background-position: calc(100% * (var(--x) / (512 - var(--size)))) calc(100% * (var(--y) / (512 - var(--size))));
+        background-size: calc(100% / (var(--size) / 512));
     }
 
     .container__full-image {
@@ -154,10 +154,10 @@
 
     .container__highlight {
         position: absolute;
-        left: calc(100% * var(--x) / 512px);
-        top: calc(100% * var(--y) / 512px);
-        width: calc(100% * var(--size) / 512px);
-        height: calc(100% * var(--size) / 512px);
+        left: calc(100% * var(--x) / 512);
+        top: calc(100% * var(--y) / 512);
+        width: calc(100% * var(--size) / 512);
+        height: calc(100% * var(--size) / 512);
         border: 2px solid var(--accent);
         cursor: crosshair;
         touch-action: none;

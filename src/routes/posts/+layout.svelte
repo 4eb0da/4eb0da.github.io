@@ -95,6 +95,11 @@
 
 <div class="article__layout">
     {@render children()}
+
+    <a class="discuss" href="http://t.me/blog_4eb0da" target="_blank">
+        <span class="icon icon_telegram"></span>
+        Обсудить в Telegram
+    </a>
 </div>
 
 <style>
@@ -147,5 +152,32 @@
         .article__layout {
             padding-left: calc(var(--toc-width) + 20px);
         }
+    }
+
+    .discuss {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-top: 40px;
+        color: var(--accent);
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .icon {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: currentColor;
+        mask-size: contain;
+        mask-position: center;
+        mask-repeat: no-repeat;
+    }
+
+    .icon_telegram {
+        mask-image: url(./telegram.svg);
     }
 </style>

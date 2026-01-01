@@ -4,7 +4,7 @@
     preload="auto"
     muted
     playsinline
-    webkitplaysinline
+    {...{webkitplaysinline: ''}}
 ></video>
 
 <style>

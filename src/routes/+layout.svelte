@@ -65,7 +65,7 @@
 		{@render children()}
 	</article>
 	<footer>
-		2025
+		2025-2026
 
 		<a
 			class="link"

@@ -8,29 +8,51 @@
     function recalcActiveHeader(): void {
         const headers = Array.from(
             document.querySelectorAll<HTMLElement>(
-                ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].map(it => `.article__layout > ${it}`).join(', ')
+                [/* 'h1',  */'h2', 'h3', 'h4', 'h5', 'h6'].map(it => `.article__layout > ${it}`).join(', ')
             )
         );
         const navHeaders = Array.from(
             document.querySelectorAll<HTMLElement>('.toc .toc-link')
         );
         const scrollTop = window.scrollY;
-        const offsets = headers.map(it =>
-            it.getBoundingClientRect().top -
+        const scrollHeight = window.innerHeight;
+        const offsets = headers.map(it => {
+            const bbox = it.getBoundingClientRect();
+            return bbox.top -
                 (parseFloat(getComputedStyle(it).marginTop) || 0) +
-                window.scrollY
-        );
-        let activeIndex = 0;
-        for (let i = 1; i < offsets.length; ++i) {
-            if (scrollTop >= offsets[i] - 40 - 2) {
-                activeIndex = i;
+                window.scrollY;
+        });
+        const heights = offsets.map((it, i) => {
+            if (i === offsets.length - 1) {
+                return document.body.scrollHeight - it;
+            }
+            return offsets[i + 1] - it;
+        });
+        let firstActiveIndex = -1;
+        let lastActiveIndex = -1;
+        for (let i = 0; i < offsets.length; ++i) {
+            const intersection = Math.min(scrollTop + scrollHeight, offsets[i] + heights[i]) -
+                Math.max(scrollTop, offsets[i]);
+                console.log(i, intersection, offsets[i], scrollTop, scrollHeight)
+            if (intersection > 0) {
+                if (firstActiveIndex < 0) {
+                    firstActiveIndex = i;
+                }
+                lastActiveIndex = i;
             }
         }
-        const oldItem = document.querySelector<HTMLElement>('.toc-link_active');
-        const newItem = navHeaders[activeIndex];
-        if (newItem && newItem !== oldItem) {
-            oldItem?.classList.remove('toc-link_active');
-            newItem.classList.add('toc-link_active');
+        console.log({firstActiveIndex, lastActiveIndex})
+        firstActiveIndex = Math.max(firstActiveIndex, 0);
+        lastActiveIndex = Math.max(lastActiveIndex, 0);
+        const oldItems = new Set(document.querySelectorAll<HTMLElement>('.toc-link_active'));
+        const newItems = new Set(navHeaders.slice(firstActiveIndex, lastActiveIndex + 1));
+        if (!(oldItems.isSubsetOf(newItems) && newItems.isSubsetOf(oldItems)) ) {
+            for (const it of oldItems) {
+                it.classList.remove('toc-link_active');
+            }
+            for (const it of newItems) {
+                it.classList.add('toc-link_active');
+            }
         }
     }
 

@@ -118,10 +118,12 @@
     }
 
     .post__date {
+        box-sizing: content-box;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        min-width: 45px;
         padding: 10px 20px 10px 10px;
         text-align: center;
     }

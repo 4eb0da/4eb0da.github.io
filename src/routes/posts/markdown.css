@@ -190,12 +190,16 @@
         border: none;
     }
 
-    a {
+    a:not([class]) {
         text-decoration: none;
         color: var(--accent);
+        border-bottom: 1px solid transparent;
+        transition: .15s ease-in-out;
+        transition-property: background-color, border-bottom-color;
 
         &:hover {
-            text-decoration: underline;
+            border-bottom-color: var(--accent);
+            background-color: var(--accent-fill-02);
         }
     }
 

@@ -34,6 +34,7 @@ body {
     --text-fill-02: rgba(17, 17, 17, .2);
     --text-fill-03: rgba(17, 17, 17, .3);
     --accent: #4eb0da;
+    --accent-fill-02: #4eb0da3a;
 }
 
 .app_dark {
@@ -47,6 +48,7 @@ body {
     --text-fill-02: rgba(248, 248, 248, .2);
     --text-fill-03: rgba(248, 248, 248, .3);
     --accent: #4eb0da;
+    --accent-fill-02: #4eb0da3a;
 }
 
 .visually-hidden {

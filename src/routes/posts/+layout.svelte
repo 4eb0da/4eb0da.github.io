@@ -153,7 +153,7 @@
     }
 
     .discuss {
-        display: flex;
+        display: inline-flex;
         align-items: center;
         gap: 4px;
         margin-top: 40px;

@@ -55,7 +55,7 @@
 			<button class="header__menu" onclick={onMenu}>
 				<div class="visually-hidden">Меню страницы</div>
 
-				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 40 40"><path d="M0 0h40v10H0zM0 30h40v10H0zM0 15h40v10H0z" fill="currentColor"/></svg>
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 40 40"><path d="M0 0h40v8H0zm0 32h40v8H0zm0-16h40v8H0z" fill="currentColor"/></svg>
 			</button>
 		{/if}
 	</header>

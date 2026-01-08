@@ -50,39 +50,22 @@
 
 @media (--desktop-window) {
     [class].toc-link {
-        position: relative;
         padding: .2em 0;
-
-        &::before {
-            position: absolute;
-            content: '';
-            top: 0;
-            left: -22px;
-            bottom: 0;
-            width: 3px;
-            background-color: var(--accent);
-            transition: opacity .3s ease-in-out;
-            opacity: 0;
-        }
     }
 
-    [class].toc-link_active::before {
-        opacity: 1;
+    .toc-level-1 {
+        position: relative;
     }
 
-    [class].toc-link-h3::before {
-        left: -42px;
-    }
-
-    [class].toc-link-h4::before {
-        left: -62px;
-    }
-
-    [class].toc-link-h5::before {
-        left: -82px;
-    }
-
-    [class].toc-link-h6::before {
-        left: -102px;
+    .toc-level-1::before {
+        position: absolute;
+        content: '';
+        top: var(--top);
+        left: -2px;
+        bottom: var(--bottom);
+        width: 3px;
+        background-color: var(--accent);
+        transition: .1s ease-out;
+        transition-property: top, bottom;
     }
 }

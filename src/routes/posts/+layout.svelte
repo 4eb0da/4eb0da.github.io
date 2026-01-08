@@ -33,7 +33,6 @@
         for (let i = 0; i < offsets.length; ++i) {
             const intersection = Math.min(scrollTop + scrollHeight, offsets[i] + heights[i]) -
                 Math.max(scrollTop, offsets[i]);
-                console.log(i, intersection, offsets[i], scrollTop, scrollHeight)
             if (intersection > 0) {
                 if (firstActiveIndex < 0) {
                     firstActiveIndex = i;
@@ -41,18 +40,17 @@
                 lastActiveIndex = i;
             }
         }
-        console.log({firstActiveIndex, lastActiveIndex})
         firstActiveIndex = Math.max(firstActiveIndex, 0);
         lastActiveIndex = Math.max(lastActiveIndex, 0);
-        const oldItems = new Set(document.querySelectorAll<HTMLElement>('.toc-link_active'));
-        const newItems = new Set(navHeaders.slice(firstActiveIndex, lastActiveIndex + 1));
-        if (!(oldItems.isSubsetOf(newItems) && newItems.isSubsetOf(oldItems)) ) {
-            for (const it of oldItems) {
-                it.classList.remove('toc-link_active');
-            }
-            for (const it of newItems) {
-                it.classList.add('toc-link_active');
-            }
+        const block = document.querySelector<HTMLElement>('.toc-level-1');
+        if (block) {
+            const newItems = navHeaders.slice(firstActiveIndex, lastActiveIndex + 1);
+            const bbox = block.getBoundingClientRect();
+            const top = (newItems[0]?.getBoundingClientRect().top ?? 0) - (bbox?.top || 0);
+            const bottom = (bbox?.bottom || 0) - (newItems[newItems.length - 1]?.getBoundingClientRect().bottom ?? 0);
+
+            block.style.setProperty('--top', `${top}px`);
+            block.style.setProperty('--bottom', `${bottom}px`);
         }
     }
 

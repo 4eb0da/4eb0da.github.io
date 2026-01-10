@@ -76,6 +76,21 @@ function insertHeadMetadata() {
 		let ogTitle;
 		let descriptionElement;
 		let ogDescription;
+		let canonical;
+
+		const postId = (/\/posts\/(.+)\/\+page.svx$/.exec(file.filename) || [])[1];
+		if (postId) {
+			canonical = {
+				type: 'element',
+				tagName: 'link',
+				properties: {
+					rel: 'canonical',
+					href:  `https://4eb0da.ru/posts/${postId}`
+				},
+				children: []
+			};
+		}
+
 		if (title) {
 			titleElement = {
 				type: 'element',
@@ -129,7 +144,8 @@ function insertHeadMetadata() {
 				titleElement,
 				ogTitle,
 				descriptionElement,
-				ogDescription
+				ogDescription,
+				canonical
 			].filter(Boolean).map(it => {
 				if (it.tagName === 'title') {
 					return `<title>${it.children[0].value}</title>`;
@@ -137,7 +153,18 @@ function insertHeadMetadata() {
 				if (it.properties.property) {
 					return `<${it.tagName} property="${it.properties.property}" content="${it.properties.content}">`;
 				}
-				return `<${it.tagName} name="${it.properties.name}" content="${it.properties.content}">`;
+
+				let res = `<${it.tagName}`;
+				const attrs = [];
+				for (const key in it.properties) {
+					attrs.push(`${key}="${it.properties[key]}"`);
+				}
+				if (attrs.length) {
+					res += ' ' + attrs.join(' ');
+				}
+				res += '>';
+
+				return res;
 			}).join('');
 			head.value = head.value.replace(/(<svelte:head>)/, () => `<svelte:head><meta property="og:image" content={shareImage}>${meta}`);
 

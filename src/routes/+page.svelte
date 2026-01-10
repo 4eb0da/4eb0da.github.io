@@ -23,6 +23,7 @@
     <meta property="og:image" content="/share.png">
     <meta property="og:title" content="4eb0da">
     <meta property="og:description" content="Блог Александра Нефедова про фронтенд-разработку">
+    <link rel="canonical" href="https://4eb0da.ru/">
 </svelte:head>
 
 <main>

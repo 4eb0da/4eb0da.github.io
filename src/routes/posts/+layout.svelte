@@ -3,7 +3,7 @@
     import './toc.css';
     import './markdown.css';
 
-	let { children } = $props();
+	let { children, data } = $props();
 
     function recalcActiveHeader(): void {
         const headers = Array.from(
@@ -71,6 +71,16 @@
         }
     }
 
+    // function formatDate(dateStr: string): string {
+    //     const date = new Date(dateStr);
+
+    //     return [
+    //         String(date.getDate()).padStart(2, '0'),
+    //         String(date.getMonth() + 1).padStart(2, '0'),
+    //         date.getFullYear()
+    //     ].join('.');
+    // }
+
     onMount(() => {
         recalcActiveHeader();
     });
@@ -98,6 +108,29 @@
         <span class="icon icon_telegram"></span>
         Обсудить в Telegram
     </a>
+
+    {#if data?.relatedPosts?.length}
+        <h4 class="article__related-title">
+            Почитать ещё посты
+        </h4>
+
+        <ul class="article__related">
+            {#each data.relatedPosts as post}
+                <li class="article__related-post">
+                    <a href="/posts/{post.name}" class="article__related-link">
+                        <img
+                            class="article__related-image"
+                            alt={post.title}
+                            src={post.shareImage}
+                        >
+                        <!-- <div class="article__related-date">
+                            {formatDate(post.date)}
+                        </div> -->
+                    </a>
+                </li>
+            {/each}
+        </ul>
+    {/if}
 </div>
 
 <style>
@@ -178,4 +211,65 @@
     .icon_telegram {
         mask-image: url(./telegram.svg);
     }
+
+    .article__related-title {
+        margin-top: 100px;
+    }
+
+    .article__related {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        margin: 0 -20px;
+        padding: 0 20px 20px;
+        overflow-x: auto;
+        list-style: none;
+    }
+
+    @media (--desktop-window) {
+        .article__related {
+            --toc-width: 16rem;
+
+            margin-right: calc((20px + var(--toc-width)) * -1);
+        }
+    }
+
+    @media (--desktop-window-large) {
+        .article__related {
+            margin-right: 0;
+            margin-left: 0;
+            padding-right: 0;
+            padding-left: 0;
+        }
+    }
+
+    .article__related-link {
+        display: block;
+        padding: 12px;
+        border-radius: 12px;
+        color: inherit;
+        text-decoration: none;
+        background-color: var(--bg-quaternary);
+        transition: background-color .15s ease-in-out;
+    }
+
+    .article__related-link:hover {
+        background-color: var(--bg-tertiary);
+    }
+
+    .article__related-image {
+        display: block;
+        width: 200px;
+        max-width: none;
+        margin: 0;
+        aspect-ratio: 1200 / 630;
+        pointer-events: none;
+    }
+
+    /* .article__related-date {
+        margin-top: 12px;
+        text-align: center;
+    } */
 </style>

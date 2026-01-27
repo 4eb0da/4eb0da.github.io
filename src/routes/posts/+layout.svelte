@@ -228,14 +228,6 @@
         list-style: none;
     }
 
-    @media (--desktop-window) {
-        .article__related {
-            --toc-width: 16rem;
-
-            margin-right: calc((20px + var(--toc-width)) * -1);
-        }
-    }
-
     @media (--desktop-window-large) {
         .article__related {
             margin-right: 0;

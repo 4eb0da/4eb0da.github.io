@@ -10,7 +10,8 @@ export async function GET() {
         `${origin}/war3-model/dist/docs/preview/preview.html`,
         `${origin}/war3-model/dist/docs/convert/convert.html`,
         `${origin}/war3-model/dist/docs/decodeblp/decodeblp.html`,
-        `${origin}/war3-model/dist/docs/optframes/optframes.html`
+        `${origin}/war3-model/dist/docs/optframes/optframes.html`,
+        `${origin}/test.html`
     ];
 
     const posts = (await load()).posts;

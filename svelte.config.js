@@ -221,7 +221,10 @@ const config = {
 		},
 		adapter: adapter({
 			fallback: '404.html'
-		})
+		}),
+		experimental: {
+			remoteFunctions: true,
+		},
 	},
 	extensions: ['.svelte', '.svx'],
 };

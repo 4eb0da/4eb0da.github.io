@@ -35,6 +35,17 @@ body {
     --text-fill-03: rgba(17, 17, 17, .3);
     --accent: #4eb0da;
     --accent-fill-02: #4eb0da3a;
+
+    --bcd-supported: #bef5a6;
+    --bcd-partial: #e8dc68;
+    --bcd-unsupported: red;
+
+    --bcd-sub-supported-text: #355b16;
+    --bcd-sub-supported-bg: #74c13773;
+    --bcd-sub-partial-text: #8e8527;
+    --bcd-sub-partial-bg: #fffd00b8;
+    --bcd-sub-unsupported-text: #ff4f00;
+    --bcd-sub-unsupported-bg: #ff8c0099;
 }
 
 .app_dark {
@@ -49,6 +60,17 @@ body {
     --text-fill-03: rgba(248, 248, 248, .3);
     --accent: #4eb0da;
     --accent-fill-02: #4eb0da3a;
+
+    --bcd-supported: #255411;
+    --bcd-partial: #655c07;
+    --bcd-unsupported: red;
+
+    --bcd-sub-supported-text: #b7ff7c;
+    --bcd-sub-supported-bg: #bdff883d;
+    --bcd-sub-partial-text: #ffe900;
+    --bcd-sub-partial-bg: #fffd0057;
+    --bcd-sub-unsupported-text: #ff8d00;
+    --bcd-sub-unsupported-bg: #ff8c007d;
 }
 
 .visually-hidden {

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Sample from './Sample.svelte';
+    import Sample from '$lib/components/Sample.svelte';
     import url from './circle.svg?url'
 </script>
 

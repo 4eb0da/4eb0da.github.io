@@ -1,38 +1,45 @@
-# sv
+# Сайт-блог
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+https://4eb0da.ru
 
-## Creating a project
+## Посты
 
-If you're seeing this, you've probably already done this step. Congrats!
+[shape(): фигуры для всех браузеров](https://4eb0da.ru/posts/css-shape-released)
 
-```sh
-# create a new project in the current directory
-npx sv create
+[color-mix() широко доступна](https://4eb0da.ru/posts/color-mix-widely-available)
 
-# create a new project in my-app
-npx sv create my-app
-```
+[Маркировка контента, сделанного с помощью ИИ](https://4eb0da.ru/posts/html-ai-content-marking)
 
-## Developing
+[Отрисовка текста и её обновки в браузерах](https://4eb0da.ru/posts/css-text-updates)
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+[Нужен ли float в 2026м году?](https://4eb0da.ru/posts/float-in-modern-css)
 
-```sh
-npm run dev
+[Origin API](https://4eb0da.ru/posts/origin-api)
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+[Type Branding и Type Flavoring](https://4eb0da.ru/posts/type-branding-type-flavoring)
 
-## Building
+[Работа с датами, временем и Temporal](https://4eb0da.ru/posts/temporal)
 
-To create a production version of your app:
+[Отслеживание поддержки фич](https://4eb0da.ru/posts/feature-support-tracking)
 
-```sh
-npm run build
-```
+[Будущая CSS-функция inherit()](https://4eb0da.ru/posts/inherit-function)
 
-You can preview the production build with `npm run preview`.
+[Navigation API реализован во всех браузерах](https://4eb0da.ru/posts/navigation-api)
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+[CSS URL Modifiers — что это вообще за зверь?](https://4eb0da.ru/posts/css-url-modifiers)
+
+[Медиа-фрагменты — ещё один способ использования якорных ссылок](https://4eb0da.ru/posts/media-fragments)
+
+[Вариативные шрифты и font-synthesis](https://4eb0da.ru/posts/variable-font-synthesis)
+
+[gesturechange и зум тачпадом на маках](https://4eb0da.ru/posts/gesturechange)
+
+[sibling-index() — герой анимаций завтрашнего дня](https://4eb0da.ru/posts/sibling-index)
+
+[Map() становится удобнее](https://4eb0da.ru/posts/map-upsert)
+
+[За пределы вьюпорта мобильного браузера](https://4eb0da.ru/posts/out-of-viewport)
+
+[Похоже, @custom-media всё-таки живо](https://4eb0da.ru/posts/custom-media)
+
+[Кривые Безье](https://4eb0da.ru/posts/bezier)

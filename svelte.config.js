@@ -225,6 +225,7 @@ const config = {
 		experimental: {
 			remoteFunctions: true,
 		},
+		inlineStyleThreshold: Infinity
 	},
 	extensions: ['.svelte', '.svx'],
 };

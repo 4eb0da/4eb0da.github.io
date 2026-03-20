@@ -18,7 +18,7 @@
 		"@eslint/compat": "^1.4.0",
 		"@eslint/js": "^9.38.0",
 		"@jsdevtools/rehype-toc": "^3.0.2",
-		"@mdn/browser-compat-data": "7.3.6",
+		"@mdn/browser-compat-data": "7.3.7",
 		"@rehype-pretty/transformers": "^0.13.2",
 		"@svelte-dev/pretty-code": "^1.0.0",
 		"@sveltejs/adapter-auto": "^7.0.0",

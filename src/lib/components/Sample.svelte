@@ -1,4 +1,8 @@
-<div class="sample">
+<script lang="ts">
+    export let largeBottomMargin = false;
+</script>
+
+<div class="sample" class:sample_bottom-margin={largeBottomMargin}>
     <div class="sample__label">Пример</div>
     
     <slot />
@@ -12,6 +16,10 @@
         margin: 40px auto 20px;
         padding: 10px;
         border: 2px solid var(--accent);
+    }
+
+    .sample_bottom-margin {
+        margin-bottom: 100px;
     }
 
     .sample__label {

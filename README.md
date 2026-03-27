@@ -4,6 +4,11 @@ https://4eb0da.ru
 
 ## Посты
 
+[Зачем нужен режим совместимости WebGPU?](https://4eb0da.ru/posts/webgpu-compatibility-mode)
+
+[Проблемы, которые Anchor Positioning не должен был решить
+](https://4eb0da.ru/posts/anchor-positioning-usages)
+
 [shape(): фигуры для всех браузеров](https://4eb0da.ru/posts/css-shape-released)
 
 [color-mix() широко доступна](https://4eb0da.ru/posts/color-mix-widely-available)

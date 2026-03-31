@@ -58,8 +58,8 @@ export async function GET() {
             return {
                 loc: link,
                 lastmod:  formatDate(post.date),
-                image: {
-                    loc: `${origin}${image}`
+                'image:image': {
+                    'image:loc': `${origin}${image}`
                 }
             };
         })

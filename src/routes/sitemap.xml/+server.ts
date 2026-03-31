@@ -27,6 +27,20 @@ export async function GET() {
         `${origin}/war3-model/dist/docs/optframes/optframes.html`
     ];
     const posts = (await load()).posts;
+    const imports = import.meta.glob('../posts/*/share.png', {
+        query: 'url'
+    });
+    const names = [...Object.keys(imports)].map(it => /\.\/posts\/(.+)\//.exec(it)?.[1]);
+    const images = (await Promise.all([...Object.values(imports)].map(it => it()))) as {
+        default: string;
+    }[];
+    const imagesMap: Record<string, string> = {};
+    images.forEach((it, index) => {
+        const name = names[index];
+        if (name) {
+            imagesMap[name] = it.default;
+        }
+    });
     const links = [
         ...urls.map(link => {
             return {
@@ -36,10 +50,17 @@ export async function GET() {
         }),
         ...posts.map(post => {
             const link = `${origin}/posts/${post.name}`;
+            const image = imagesMap[post.name];
+            if (!image) {
+                throw new Error('Image error: ' + post.name);
+            }
 
             return {
                 loc: link,
-                lastmod:  formatDate(post.date)
+                lastmod:  formatDate(post.date),
+                image: {
+                    loc: `${origin}${image}`
+                }
             };
         })
     ]
@@ -50,7 +71,8 @@ export async function GET() {
             '@_encoding': 'UTF-8'
         },
         urlset: {
-            '@_xmlns': 'http://sitemaps.org',
+            '@_xmlns': 'http://www.sitemaps.org/schemas/sitemap/0.9',
+            '@_xmlns:image': 'http://google.com',
 
             url: links
         }

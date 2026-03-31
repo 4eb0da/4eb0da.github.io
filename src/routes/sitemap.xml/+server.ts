@@ -72,7 +72,7 @@ export async function GET() {
         },
         urlset: {
             '@_xmlns': 'http://www.sitemaps.org/schemas/sitemap/0.9',
-            '@_xmlns:image': 'http://google.com',
+            '@_xmlns:image': 'http://www.google.com/schemas/sitemap-image/1.1',
 
             url: links
         }

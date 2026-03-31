@@ -2,4 +2,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://4eb0da.ru/sitemap.txt
+Sitemap: https://4eb0da.ru/sitemap.xml

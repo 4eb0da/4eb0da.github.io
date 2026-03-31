@@ -12,7 +12,7 @@
 </script>
 
 <svelte:head>
-    <title>4eb0da</title>
+    <title>4eb0da — блог про фронтенд-разработку | Александр Нефедов</title>
     <meta name="description" content="Блог Александра Нефедова про фронтенд-разработку">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Блог 4eb0da">

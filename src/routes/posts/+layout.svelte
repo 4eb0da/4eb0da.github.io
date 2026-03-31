@@ -87,7 +87,8 @@
 </script>
 
 <svelte:head>
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="article">
+    <meta property="article:author" content="Александр Нефедов" />
     <meta property="og:site_name" content="Блог 4eb0da">
     <meta property="og:locale" content="ru_RU">
     <meta property="twitter:card" content="summary_large_image">

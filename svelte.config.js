@@ -37,11 +37,18 @@ function insertDateTags() {
 					className: 'info'
 				},
 				children: [{
+					type: 'element',
+					tagName: 'time',
+					properties: {
+						datetime: date.toISOString()
+					},
+					children: [{
+						type: 'text',
+						value: dateStr
+					}]
+				}, {
 					type: 'text',
-					value: [
-						dateStr,
-						tags.join(', ')
-					].join(' • ')
+					value: ' • ' + tags.join(', ')
 				}]
 			};
 			root.children.unshift(info);
@@ -71,12 +78,22 @@ function insertHeadMetadata() {
 			return root;
 		}
 
-		const {title, description} = file.data.fm;
+		const {title, description, date} = file.data.fm;
 		let titleElement;
 		let ogTitle;
 		let descriptionElement;
 		let ogDescription;
 		let canonical;
+
+		let script = root.children.find(it => it.value?.includes('<script'));
+		if (!script) {
+			script = {
+				type: 'raw',
+				value: '<script lang="ts"></script>'
+			};
+			root.children.unshift(script);
+		}
+		script.value = script.value.replace(/(<script.*?>)/, '$1\nimport shareImage from \'./share.png?url\';\n');
 
 		const postId = (/\/posts\/(.+)\/\+page.svx$/.exec(file.filename) || [])[1];
 		if (postId) {
@@ -168,16 +185,33 @@ function insertHeadMetadata() {
 			}).join('');
 			head.value = head.value.replace(/(<svelte:head>)/, () => `<svelte:head><meta property="og:image" content={shareImage}>${meta}`);
 
-			let script = root.children.find(it => it.value?.includes('<script'));
-			if (!script) {
-				script = {
-					type: 'raw',
-					value: '<script lang="ts"></script>'
-				};
-				root.children.unshift(script);
+			if (postId && title && description && date) {
+				const value = '<script type="application/ld+json">' + JSON.stringify({
+					"@context": "https://schema.org",
+					"@type": "BlogPosting",
+					"headline": title,
+					"datePublished": [
+						date.getFullYear(),
+						String(date.getMonth() + 1).padStart(2, '0'),
+						String(date.getDate()).padStart(2, '0')
+					].join('-'),
+					"author": {
+						"@type": "Person",
+						"name": "Александр Нефедов",
+						"url": "https://4eb0da.ru/about"
+					},
+					"publisher": {
+						"@type": "Person",
+						"name": "Александр Нефедов"
+					},
+					"description": description,
+					"mainEntityOfPage": `https://4eb0da.ru/posts/${postId}`
+				}) + '</script>';
+
+				head.value = head.value.replace(/(<svelte:head>)/, () => `<svelte:head>${value}`);
 			}
-			script.value = script.value.replace(/(<script.*?>)/, '$1\nimport shareImage from \'./share.png?url\';\n');
 		}
+
 		return root;
 	};
 }

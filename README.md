@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[WebTransport всех победит?](https://4eb0da.ru/posts/webtransport-is-a-king)
+
 [Обзор TypeScript 6](https://4eb0da.ru/posts/typescript-6)
 
 [Зачем нужен режим совместимости WebGPU?](https://4eb0da.ru/posts/webgpu-compatibility-mode)

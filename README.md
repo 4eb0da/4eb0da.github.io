@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[Псевдоэлементы теперь настоящие](https://4eb0da.ru/posts/pseudo-elements-are-real)
+
 [WebTransport всех победит?](https://4eb0da.ru/posts/webtransport-is-a-king)
 
 [Обзор TypeScript 6](https://4eb0da.ru/posts/typescript-6)

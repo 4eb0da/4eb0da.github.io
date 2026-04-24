@@ -35,7 +35,7 @@
         display: flex;
         width: fit-content;
         margin: 0 auto 20px;
-        border-radius: 4px;
+        border-radius: 8px;
         border: 2px solid var(--accent);
     }
 
@@ -46,10 +46,12 @@
 
         &:first-child {
             border: 4px 0 0 4px;
+            border-radius: 6px 0 0 6px;
         }
 
         &:last-child {
             border: 0 4px 4px 0;
+            border-radius: 0 6px 6px 0;
         }
 
         &:has(.radio__input:checked) {

@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[corner-shape и border-shape: что это и в чём разница?](https://4eb0da.ru/posts/corner-shape-and-border-shape)
+
 [Псевдоэлементы теперь настоящие](https://4eb0da.ru/posts/pseudo-elements-are-real)
 
 [WebTransport всех победит?](https://4eb0da.ru/posts/webtransport-is-a-king)

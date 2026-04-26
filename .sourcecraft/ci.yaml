@@ -1,0 +1,66 @@
+on:
+  push:
+    - workflows: build-workflow 
+      filter: 
+        branches: ["main"]
+
+tokens:
+  SERVICE_CONNECTION:
+    service_connection: static-site
+    scope: ref
+
+workflows:
+  build-workflow:
+    tasks:
+      - build-task
+
+tasks:
+  - name: build-task
+    cubes:
+      # ШАГ 1: Получение IAM-токена Yandex Cloud
+      # Кубик обменивает токен SourceCraft на IAM-токен Yandex Cloud
+      # и сохраняет его в переменную IAM_TOKEN в блоке outputs
+      - name: get-iam-token
+        env:
+          ID_TOKEN: ${{ tokens.SERVICE_CONNECTION.id_token }}
+          YC_SA_ID: ${{ tokens.SERVICE_CONNECTION.service_account_id }}
+        image: cr.yandex/sourcecraft/yc-iam:latest
+
+      # ШАГ 2: Получение ключей доступа к S3 из Yandex Lockbox
+      # Извлекает секреты для доступа к Object Storage на основе доменного имени
+      - name: get-s3-keys
+        image: cr.yandex/sourcecraft/yc-cli:latest
+        env:
+          YC_IAM_TOKEN: ${{ cubes.get-iam-token.outputs.IAM_TOKEN }}
+          YC_FOLDER_ID: ${{ tokens.SERVICE_CONNECTION.folder_id }}
+          DOMAIN_NAME: 4eb0da.ru
+        script:
+          - |
+            echo "🔧 Настройка Yandex Cloud CLI..."
+            yc config set folder-id $YC_FOLDER_ID
+
+            echo "🔍 Поиск секретов для домена: $DOMAIN_NAME"
+            export DOMAIN_LABEL=${DOMAIN_NAME//./-}
+            echo "📋 Лейбл домена: $DOMAIN_LABEL"
+
+            echo "🔐 Поиск секрета в Yandex Lockbox..."
+            export SECRET_ID=$(yc lockbox secret list --jq ".[] | select(.labels[\"domain-name\"] == \"$DOMAIN_LABEL\") | .id")
+
+            if [ -z "$SECRET_ID" ]; then
+              echo "❌ Секрет для домена $DOMAIN_LABEL не найден!"
+              exit 1
+            fi
+
+            echo "✅ Найден секрет с ID: $SECRET_ID"
+
+            echo "🔑 Получение ключей доступа к S3..."
+            echo "S3_ACCESS_KEY_ID=$(yc lockbox payload get --id $SECRET_ID --key access_key)" >> $SOURCECRAFT_OUTPUT
+            echo "S3_SECRET_ACCESS_KEY=$(yc lockbox payload get --id $SECRET_ID --key secret_key)" >> $SOURCECRAFT_OUTPUT
+            echo "✅ Ключи S3 успешно получены и сохранены"
+
+      - name: build
+        image: docker.io/library/node
+        script:
+          - npm ci
+          - npm run build
+          - aws s3 sync build/ s3://4eb0da.ru/ --endpoint-url=https://storage.yandexcloud.net --region=ru-central1 --delete

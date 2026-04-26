@@ -59,8 +59,11 @@ tasks:
             echo "✅ Ключи S3 успешно получены и сохранены"
 
       - name: build
-        image: docker.io/library/node
+        image: node:24-alpine
         script:
-          - npm ci
-          - npm run build
-          - aws s3 sync build/ s3://4eb0da.ru/ --endpoint-url=https://storage.yandexcloud.net --region=ru-central1 --delete
+          - |
+            npm ci
+            npm run build
+            echo "📦 Установка AWS CLI..."
+            apk add --no-cache aws-cli
+            aws s3 sync build/ s3://4eb0da.ru/ --endpoint-url=https://storage.yandexcloud.net --region=ru-central1 --delete

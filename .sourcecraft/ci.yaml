@@ -60,6 +60,9 @@ tasks:
 
       - name: build
         image: node:24-alpine
+        env:
+          AWS_ACCESS_KEY_ID: ${{ cubes.get-s3-keys.outputs.S3_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ cubes.get-s3-keys.outputs.S3_SECRET_ACCESS_KEY }}
         script:
           - |
             npm ci

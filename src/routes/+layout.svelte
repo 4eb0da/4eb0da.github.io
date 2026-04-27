@@ -46,7 +46,7 @@
 			<a href="/" class="link">
 				4eb0da
 			</a>
-			<a href="/about" class="link">
+			<a href="/about.html" class="link">
 				Обо мне
 			</a>
 		</div>

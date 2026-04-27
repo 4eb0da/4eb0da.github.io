@@ -198,7 +198,7 @@ function insertHeadMetadata() {
 					"author": {
 						"@type": "Person",
 						"name": "Александр Нефедов",
-						"url": "https://4eb0da.ru/about"
+						"url": "https://4eb0da.ru/about.html"
 					},
 					"publisher": {
 						"@type": "Person",

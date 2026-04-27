@@ -102,7 +102,7 @@ function insertHeadMetadata() {
 				tagName: 'link',
 				properties: {
 					rel: 'canonical',
-					href:  `https://4eb0da.ru/posts/${postId}`
+					href:  `https://4eb0da.ru/posts/${postId}.html`
 				},
 				children: []
 			};

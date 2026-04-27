@@ -36,7 +36,7 @@
     <ul class="posts-list">
         {#each data.posts as post}
             <li>
-                <a href="/posts/{post.name}" class="post">
+                <a href="/posts/{post.name}.html" class="post">
                     <div class="post__date">
                         <div class="post__day">
                             {post.date.getDate()}

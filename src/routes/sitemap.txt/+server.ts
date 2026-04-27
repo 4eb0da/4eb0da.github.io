@@ -16,7 +16,7 @@ export async function GET() {
     const posts = (await load()).posts;
 
     for (const post of posts) {
-        urls.push(`${origin}/posts/${post.name}`);
+        urls.push(`${origin}/posts/${post.name}.html`);
     }
 
     return new Response(urls.join('\n'), {

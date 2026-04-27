@@ -43,7 +43,7 @@ export async function GET() {
                 description: 'Блог Александра Нефедова про фронтенд-разработку',
                 language: 'ru',
                 item: posts.map(post => {
-                    const link = `${origin}/posts/${post.name}`;
+                    const link = `${origin}/posts/${post.name}.html`;
                     const image = imagesMap[post.name];
                     if (!image) {
                         throw new Error('Image error: ' + post.name);

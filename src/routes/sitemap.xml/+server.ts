@@ -49,7 +49,7 @@ export async function GET() {
             };
         }),
         ...posts.map(post => {
-            const link = `${origin}/posts/${post.name}`;
+            const link = `${origin}/posts/${post.name}.html`;
             const image = imagesMap[post.name];
             if (!image) {
                 throw new Error('Image error: ' + post.name);

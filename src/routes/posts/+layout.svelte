@@ -118,7 +118,7 @@
         <ul class="article__related">
             {#each data.relatedPosts as post}
                 <li class="article__related-post">
-                    <a href="/posts/{post.name}" class="article__related-link">
+                    <a href="/posts/{post.name}.html" class="article__related-link">
                         <img
                             class="article__related-image"
                             alt={post.title}

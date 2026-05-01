@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[Симуляция медленной сети для отдельных запросов](https://4eb0da.ru/posts/throttle-per-request.html)
+
 [corner-shape и border-shape: что это и в чём разница?](https://4eb0da.ru/posts/corner-shape-and-border-shape.html)
 
 [Псевдоэлементы теперь настоящие](https://4eb0da.ru/posts/pseudo-elements-are-real.html)

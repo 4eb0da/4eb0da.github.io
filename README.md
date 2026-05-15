@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[Калькулятор фолбека для corner-shape](https://4eb0da.ru/posts/corner-shape-fallback.html)
+
 [Вышел Rolldown 1.0](https://4eb0da.ru/posts/rolldown-release.html)
 
 [Симуляция медленной сети для отдельных запросов](https://4eb0da.ru/posts/throttle-per-request.html)

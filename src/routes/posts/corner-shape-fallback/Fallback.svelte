@@ -311,6 +311,10 @@
         overflow: clip;
     }
 
+    input {
+        accent-color: var(--accent);
+    }
+
     .border-radius,
     .corner-radius {
         position: absolute;

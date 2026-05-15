@@ -12,7 +12,7 @@ tags:
 
 ## Калькулятор
 
-В дополнение к недавней статье про [corner-shape и border-shape](posts/corner-shape-and-border-shape.html) захотелось сделать инструмент, который бы решал проблему фолбека `corner-shape` в `border-radius`. Ведь если делать это в "лоб", то визуал будет сильно отличаться.
+В дополнение к недавней статье про [corner-shape и border-shape](/posts/corner-shape-and-border-shape.html) захотелось сделать инструмент, который бы решал проблему фолбека `corner-shape` в `border-radius`. Ведь если делать это в "лоб", то визуал будет сильно отличаться.
 
 <Fallback />
 

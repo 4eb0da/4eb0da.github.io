@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[Нативный TypeScript в Node.js](https://4eb0da.ru/posts/node-native-typescript.html)
+
 [Калькулятор фолбека для corner-shape](https://4eb0da.ru/posts/corner-shape-fallback.html)
 
 [Вышел Rolldown 1.0](https://4eb0da.ru/posts/rolldown-release.html)

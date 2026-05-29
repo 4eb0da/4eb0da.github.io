@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[Ищем баланс с помощью flex-wrap: balance](https://4eb0da.ru/posts/flex-wrap-balance.html)
+
 [Нативный TypeScript в Node.js](https://4eb0da.ru/posts/node-native-typescript.html)
 
 [Калькулятор фолбека для corner-shape](https://4eb0da.ru/posts/corner-shape-fallback.html)

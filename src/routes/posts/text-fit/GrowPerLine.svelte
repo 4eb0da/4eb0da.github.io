@@ -82,6 +82,7 @@
 
     input {
         margin-bottom: 20px;
+        accent-color: var(--accent);
     }
 
     .block {

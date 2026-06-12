@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[text-fit: свойство, которое дождались](https://4eb0da.ru/posts/text-fit.html)
+
 [Декораторы отступов, или свойства, которые у нас уже давно были](https://4eb0da.ru/posts/gap-decorators.html)
 
 [Ищем баланс с помощью flex-wrap: balance](https://4eb0da.ru/posts/flex-wrap-balance.html)

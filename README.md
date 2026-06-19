@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[Автоматические размеры полей с field-sizing](https://4eb0da.ru/posts/field-sizing.html)
+
 [text-fit: свойство, которое дождались](https://4eb0da.ru/posts/text-fit.html)
 
 [Декораторы отступов, или свойства, которые у нас уже давно были](https://4eb0da.ru/posts/gap-decorators.html)

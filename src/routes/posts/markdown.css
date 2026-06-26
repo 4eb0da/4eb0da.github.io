@@ -222,4 +222,13 @@
         background: var(--bg-tertiary);
         border: 1px solid var(--text-fill-03);
     }
+
+    table {
+        margin: 0 auto;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border: 1px solid;
+    }
 }

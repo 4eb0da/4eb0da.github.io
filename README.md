@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[Вышел Babel 8. А нужен ли он?](https://4eb0da.ru/posts/babel-8-released.html)
+
 [Автоматические размеры полей с field-sizing](https://4eb0da.ru/posts/field-sizing.html)
 
 [text-fit: свойство, которое дождались](https://4eb0da.ru/posts/text-fit.html)

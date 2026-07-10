@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[Пишем плагин к OXC на Rust](https://4eb0da.ru/posts/oxc-plugin.html)
+
 [Пишем плагин к SWC на Rust](https://4eb0da.ru/posts/swc-plugin.html)
 
 [Вышел Babel 8. А нужен ли он?](https://4eb0da.ru/posts/babel-8-released.html)

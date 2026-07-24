@@ -38,7 +38,7 @@ body {
 
     --bcd-supported: #bef5a6;
     --bcd-partial: #e8dc68;
-    --bcd-unsupported: red;
+    --bcd-unsupported: rgb(246, 111, 111);
 
     --bcd-sub-supported-text: #355b16;
     --bcd-sub-supported-bg: #74c13773;
@@ -63,7 +63,7 @@ body {
 
     --bcd-supported: #255411;
     --bcd-partial: #655c07;
-    --bcd-unsupported: red;
+    --bcd-unsupported: rgb(134, 49, 49);
 
     --bcd-sub-supported-text: #b7ff7c;
     --bcd-sub-supported-bg: #bdff883d;

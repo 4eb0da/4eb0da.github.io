@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[calc-mix() и progress() – что за функции и в чём разница?](https://4eb0da.ru/posts/css-calc-mix-progress.html)
+
 [Oxlint и кастомные правила на JS](https://4eb0da.ru/posts/oxlint-js-plugin.html)
 
 [Пишем плагин к OXC на Rust](https://4eb0da.ru/posts/oxc-plugin.html)

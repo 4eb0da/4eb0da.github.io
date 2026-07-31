@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[CSS Link Parameters, что ты такое?](https://4eb0da.ru/posts/css-link-parameters.html)
+
 [calc-mix() и progress() – что за функции и в чём разница?](https://4eb0da.ru/posts/css-calc-mix-progress.html)
 
 [Oxlint и кастомные правила на JS](https://4eb0da.ru/posts/oxlint-js-plugin.html)

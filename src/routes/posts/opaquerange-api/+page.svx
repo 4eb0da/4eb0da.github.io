@@ -1,0 +1,103 @@
+---
+title: "OpaqueRange и новые возможности для input"
+description: "Апи для визуального выделения текста в input и textarea, а также для вычисления координат символов"
+date: 2026-08-14
+tags:
+    - dom
+---
+
+<script lang="ts">
+    import BrowserCompatData from '$lib/components/BrowserCompatData.svelte';
+    import Input from './Input.svelte';
+    import Tooltip from './Tooltip.svelte';
+</script>
+
+## Вступление
+
+<BrowserCompatData
+    title="OpaqueRange"
+    compat={{
+        support: {
+            chrome: {
+                version_added: 152
+            }
+        }
+    }}
+    link="https://chromestatus.com/feature/6297362687066112"
+/>
+
+Поля ввода представлены от простых окон для ввода текста до сложных визуальных редакторов. И функционал `<textarea>` с `<input>` ограничен – если хочется хоть малейший интерактив, то уже начинаются менее приятные конструкции. Клоны введённого текста поверх, определение области клика по координатам, `contenteditable` и так далее.
+
+Получается, что вместо того, чтобы использовать готовые компоненты по прямому назначению, разработчики вынуждены "собирать" функционал из сторонних инструментов. Звучит неправильно? Встречаем `OpaqueRange`.
+
+## Новое апи
+
+У `<input>` и `<textarea>` добавляется новый метод – `createValueRange`:
+
+```js
+const opaqueRange = input.createValueRange(from, to);
+```
+
+Функция возвращает объект "класса" `opaqueRange`. У объекта есть свои методы: `getBoundingClientRect()`, `getClientRects()` и `disconnect()`. Первые два – знакомые из `Element`. Последний позволяет удалить диапазон.
+
+Есть также и свойства – `startOffset`, `endOffset` и `collapsed`. Думаю, с ними всё очевидно. Перейдём к использованию.
+
+## Highlight API
+
+[Highlight API](https://developer.mozilla.org/en-US/docs/Web/API/Highlight) позволяет выделять произвольную часть текста, а затем написать для него стили в CSS^
+
+```js
+const range = new Range();
+range.setStart(textNode, 10);
+range.setEnd(textNode, 20);
+const ranges = [range];
+
+const highlight = new Highlight(...ranges);
+CSS.highlights.set('custom-highlight', highlight);
+```
+```css
+::highlight(custom-highlight) {
+    background-color: deepskyblue;
+}
+```
+
+Это позволяет не делать `<span>` в тексте для выделения. Теоретически, можно и подсветку кода сделать на этом механизме. У псевдоэлемента `::highlight` можно указывать ограниченный набор свойств: `color`, `background-color`, `text-decoration`, `text-shadow` и ещё несколько `-webkit` свойств. `border-radius`, просто `border` или `padding` – не поддерживаются.
+
+Как это всё связано с `OpaqueRange`? Очень просто. Объекты `OpaqueRange` можно использовать в Highlight API!
+
+```js
+const opaqueRange = input.createValueRange(from, to);
+
+const highlight = new Highlight(opaqueRange);
+```
+
+Тем самым мы можем сделать выделение текста внутри инпутов и полей ввода! Выделить имена, адреса почт, подсветить слова при наведении. Не получится только менять насыщенность текста через `font-weight`, размер текста, или вставить графические элементы. В общем, `<textarea>` в WYSIWYG не превратится.
+
+Пример с подсветкой логинов в инпуте:
+
+<Input />
+
+## Позиционирование элементов
+
+С помощью `getBoundingClientRect()` и `getClientRects()` можно вычислить позицию как конкретного символа, так и промежутка символов в поле ввода. Благодаря этому можно показывать всевозможные тултипы, саджесты и так далее:
+
+```js
+const bbox = opaqueRange.getBoundingClientRect();
+
+tooltip.style.top = `${bbox.top}px`;
+tooltip.style.left = `${bbox.left}px`;
+```
+
+<Tooltip />
+
+## Динамический OpaqueRange
+
+Апи учитывает изменения текста, и промежутки сами сдвигаются. Таким образом, выделение слова продолжит свою работу и после изменений.
+
+Этим объясняется и метод `.disconnect()`. `OpaqueRange` – динамический промежуток текста, а `disconnect` его "открепляет".
+
+## Итого
+
+С новым `.createValueRange()` `<input>` и `<textarea>` делают очень широкий шаг в функционале. Объединяя с `document.caretPositionFromPoint()`, так и вовсе возможностей на порядок больше, чем можно было подумать ещё пять лет назад.
+
+Это всё, конечно, здорово добавляет функционала, но мне немного не хватает кастомных стилей для промежутков. Те же самые отступы или скругления отлично бы пригодились. А пока что это как обычный `<select>` до поддержки его кастомизации – туда сейчас хоть видео вставлять внутрь можно. А для `input` и `textarea` такие возможности ещё впереди?

@@ -4,14 +4,18 @@
     const {
         name,
         value,
+        js,
         message
     }: {
-        name: string;
-        value: string;
+        name?: string;
+        value?: string;
+        js?: unknown;
         message: string;
     } = $props();
 
-    const supported = !browser || CSS.supports(name, value);
+    const supported = !browser ||
+        name && value && CSS.supports(name, value) ||
+        js;
 </script>
 
 {#if !supported}

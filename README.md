@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[OpaqueRange и новые возможности для input](https://4eb0da.ru/posts/opaquerange-api.html)
+
 [Element-scoped View Transitions, ультимативный способ запустить анимацию?](https://4eb0da.ru/posts/element-view-transitions.html)
 
 [CSS Link Parameters, что ты такое?](https://4eb0da.ru/posts/css-link-parameters.html)

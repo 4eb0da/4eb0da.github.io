@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[Статус использованных фич в Lighthouse](https://4eb0da.ru/posts/baseline-in-lighthouse.html)
+
 [OpaqueRange и новые возможности для input](https://4eb0da.ru/posts/opaquerange-api.html)
 
 [Element-scoped View Transitions, ультимативный способ запустить анимацию?](https://4eb0da.ru/posts/element-view-transitions.html)

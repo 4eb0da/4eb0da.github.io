@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[Итераторы повзрослели, давайте относиться к ним серьёзнее](https://4eb0da.ru/posts/modern-iterators.html)
+
 [Статус использованных фич в Lighthouse](https://4eb0da.ru/posts/baseline-in-lighthouse.html)
 
 [OpaqueRange и новые возможности для input](https://4eb0da.ru/posts/opaquerange-api.html)

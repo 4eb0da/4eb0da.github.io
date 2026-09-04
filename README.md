@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[Web Haptics API – очень ждём?](https://4eb0da.ru/posts/web-haptics.html)
+
 [Итераторы повзрослели, давайте относиться к ним серьёзнее](https://4eb0da.ru/posts/modern-iterators.html)
 
 [Статус использованных фич в Lighthouse](https://4eb0da.ru/posts/baseline-in-lighthouse.html)

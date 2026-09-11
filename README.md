@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[text-box-edge и text-box-trim: доступны во всех браузерах](https://4eb0da.ru/posts/css-text-box.html)
+
 [Web Haptics API – очень ждём?](https://4eb0da.ru/posts/web-haptics.html)
 
 [Итераторы повзрослели, давайте относиться к ним серьёзнее](https://4eb0da.ru/posts/modern-iterators.html)

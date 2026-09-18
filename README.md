@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[frame-sizing не решает проблемы размера ифреймов?](https://4eb0da.ru/posts/frame-sizing.html)
+
 [text-box-edge и text-box-trim: доступны во всех браузерах](https://4eb0da.ru/posts/css-text-box.html)
 
 [Web Haptics API – очень ждём?](https://4eb0da.ru/posts/web-haptics.html)

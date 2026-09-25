@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[image-animation и контроль над анимацией](https://4eb0da.ru/posts/css-image-animation.html)
+
 [frame-sizing не решает проблемы размера ифреймов?](https://4eb0da.ru/posts/frame-sizing.html)
 
 [text-box-edge и text-box-trim: доступны во всех браузерах](https://4eb0da.ru/posts/css-text-box.html)

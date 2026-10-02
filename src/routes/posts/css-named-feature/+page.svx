@@ -1,0 +1,143 @@
+---
+title: "Поддержка фич, которые иначе отследить нельзя: named-feature"
+description: "Текущее состояние @supports и новая named-feature"
+date: 2026-10-02
+tags:
+    - css
+    - js
+    - dom
+---
+
+<script lang="ts">
+    import BrowserCompatData from '$lib/components/BrowserCompatData.svelte';
+</script>
+
+## Вступление
+
+<BrowserCompatData
+    id="css.at-rules.supports.named-feature"
+    title="named-feature"
+/>
+
+Не так давно Брамус [рассказал](https://www.bram.us/2026/08/27/feature-detecting-undetectable-css-features-with-supports-named-feature/) нам о том, как принёс запрос на способ определения поддержки `gap` в флексбоксах. Не буду подробно повторять его статью, смысл сводится к тому, что не существует простого способа такой проверки: `display: flex` – поддерживается, `gap: 10px` – поддерживается (в гридах), а `gap` в `flex` – уже нет.
+
+На тот момент никакого внятного способа не появилось. Но способ определения поддержки аналогичных штук появился теперь! Встречайте: `named-feature()`.
+
+## named-feature
+
+```css
+@supports named-feature(...) {
+    ...
+}
+```
+
+Функция принимает некоторый айди. На текущий момент таких 2:
+
+1) `anchor-position-follows-transform`. В первых версиях anchor positioning позиционирование не учитывало трансформации. В более свежих версиях уже учитывает. `named-feature` позволяет проверить, будет ли учтена  трансформация.
+
+2) `single-axis-scroll-container`. Идея в том, что совсем недавно мы не могли сделать скролл в элементе только по одной оси. Да, мы могли указать `overflow: scroll hidden`, но в этом случае скролл всё равно мог быть по двумя осям. Потом появился `clip`, но значения по типу `overflow: scroll clip` на самом деле приводили к `scroll hidden`, т..е не работали. А теперь – будут. Более того, `position: sticky` с такой комбинацией будет "цепляться" к разным элементам по разным осям, что расширяет возможности `sticky`.
+
+## Почему фич всего 2?
+
+Как уже написано выше, подобный функционал был бы полезен для определения поддержки `gap` во флексбоксах... Если бы `named-feature` была сделана до `gap`. Все браузеры, которые умеют `named-feature`, умеют и `gap` во флексбоксах.
+
+Но то, что `named-feature` появилось, приведёт к появлению новых айди в функции в будущем. Главное, что механизм теперь есть.
+
+## Какие ещё @supports есть на данный момент?
+
+На текущий момент у нас есть:
+
+1) Проверка свойства со значением
+
+<BrowserCompatData
+    id="css.at-rules.supports"
+    title="@supports"
+/>
+
+```css
+@supports (display: flex) {
+    ...
+}
+```
+
+```js
+CSS.supports("display: flex")
+```
+
+2) `selector`. Проверка поддержки селектора
+
+<BrowserCompatData
+    id="css.at-rules.supports.selector"
+    title="@supports selector"
+/>
+
+```css
+@supports selector(:has(a)) {
+    ...
+}
+```
+
+```js
+CSS.supports('selector(:has(a))')
+```
+
+Учитывая количество нового функционала в CSS, может быть очень полезно.
+
+3) `font-format` и `font-tech`. Проверка поддержки соответствующих форматов и технологий шрифтов
+
+<BrowserCompatData
+    id="css.at-rules.supports.font-format"
+    title="@supports font-format"
+/>
+<BrowserCompatData
+    id="css.at-rules.supports.font-tech"
+    title="@supports font-tech"
+/>
+
+```css
+@supports font-format(opentype) {
+    ...
+}
+@supports font-tech(color-COLRv1) {
+    ...
+}
+```
+
+```js
+CSS.supports('font-format(opentype)')
+CSS.supports('font-tech(color-COLRv1)')
+```
+
+На мой взгляд, функционал достаточно узкий. Кому-то поможет – и хорошо.
+
+4) `at-rule`. Проверка поддержки директив
+
+<BrowserCompatData
+    id="css.at-rules.supports.at-rule"
+    title="@supports at-rule"
+/>
+
+```css
+@supports at-rule(@scope) {
+    ...
+}
+```
+
+```js
+CSS.supports('at-rule(@scope)')
+```
+
+Из минусов – нельзя проверять конкретные значения, например, поддержку операторов `>` в `@media`.
+
+5) `named-feature`. Тут уже всё обсудили.
+
+<BrowserCompatData
+    id="css.at-rules.supports.named-feature"
+    title="named-feature"
+/>
+
+## Итого
+
+Браузеры релизят фичи семимильными темпами. Одна проблема – [понять](/posts/feature-support-tracking.html), что какая-то часть функционала работает не везде. Вторая – понять, как включить код в неподдерживаемых браузерах. И как раз со вторым сильно помогает прокачанный `@supports`.
+
+Пока что ощущение, что `@supports` всегда будет догонять реальные задачи, но разрыв очень сильно сократился.

@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[Поддержка фич, которые иначе отследить нельзя: named-feature](https://4eb0da.ru/posts/css-named-feature.html)
+
 [image-animation и контроль над анимацией](https://4eb0da.ru/posts/css-image-animation.html)
 
 [frame-sizing не решает проблемы размера ифреймов?](https://4eb0da.ru/posts/frame-sizing.html)

@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[Анимированная выпадушка на CSS](https://4eb0da.ru/posts/css-spoiler.html)
+
 [Будущие новинки из CSS Navigation Matching](https://4eb0da.ru/posts/css-navigation-api.html)
 
 [Поддержка фич, которые иначе отследить нельзя: named-feature](https://4eb0da.ru/posts/css-named-feature.html)

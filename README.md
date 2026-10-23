@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[HTML в Canvas вышел, что он нам несёт?](https://4eb0da.ru/posts/html-in-canvas.html)
+
 [Анимированная выпадушка на CSS](https://4eb0da.ru/posts/css-spoiler.html)
 
 [Будущие новинки из CSS Navigation Matching](https://4eb0da.ru/posts/css-navigation-api.html)

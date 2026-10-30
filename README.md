@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[Как работает focusgroup и чем полезен?](https://4eb0da.ru/posts/html-focusgroup.html)
+
 [HTML в Canvas вышел, что он нам несёт?](https://4eb0da.ru/posts/html-in-canvas.html)
 
 [Анимированная выпадушка на CSS](https://4eb0da.ru/posts/css-spoiler.html)

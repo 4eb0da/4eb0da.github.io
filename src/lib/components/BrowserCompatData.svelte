@@ -40,7 +40,8 @@
         const support = lastItem.version_added;
         const partial = lastItem.prefix ||
             lastItem.partial_implementation ||
-            lastItem.flags;
+            lastItem.flags ||
+            lastItem.version_added === 'preview';
 
         return {
             support,

@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[Используем random() правильно](https://4eb0da.ru/posts/css-random.html)
+
 [Как работает focusgroup и чем полезен?](https://4eb0da.ru/posts/html-focusgroup.html)
 
 [HTML в Canvas вышел, что он нам несёт?](https://4eb0da.ru/posts/html-in-canvas.html)

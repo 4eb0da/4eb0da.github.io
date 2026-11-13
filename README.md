@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[Булочка против tsc, булочка победила?](https://4eb0da.ru/posts/bun-vs-tsc.html)
+
 [Используем random() правильно](https://4eb0da.ru/posts/css-random.html)
 
 [Как работает focusgroup и чем полезен?](https://4eb0da.ru/posts/html-focusgroup.html)

@@ -4,7 +4,7 @@ description: "Что это, какие возможности предоста�
 date: 2026-04-10
 tags:
     - dom
-    - nodejs
+    - node
 ---
 
 <script lang="ts">

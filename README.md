@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[Блогу 1 год](https://4eb0da.ru/posts/blog-1-year.html)
+
 [Булочка против tsc, булочка победила?](https://4eb0da.ru/posts/bun-vs-tsc.html)
 
 [Используем random() правильно](https://4eb0da.ru/posts/css-random.html)

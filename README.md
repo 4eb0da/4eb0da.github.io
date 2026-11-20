@@ -4,6 +4,8 @@ https://4eb0da.ru
 
 ## Посты
 
+[Разбираемся с aria-actions](https://4eb0da.ru/posts/aria-actions-in-practice.html)
+
 [Блогу 1 год](https://4eb0da.ru/posts/blog-1-year.html)
 
 [Булочка против tsc, булочка победила?](https://4eb0da.ru/posts/bun-vs-tsc.html)
